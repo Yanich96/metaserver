@@ -6,19 +6,21 @@ include_directories(/Users/yanaalekseeva/homebrew/Cellar/libpqxx/7.7.4/include)
 link_directories(/Users/yanaalekseeva/homebrew/Cellar/libpqxx/7.7.4/lib
         /Users/yanaalekseeva/homebrew/Cellar/libpq/15.1/lib)
 find_package(PostgreSQL REQUIRED)
-find_package(Poco REQUIRED COMPONENTS Net Foundation)
+find_package(Poco REQUIRED COMPONENTS Net Foundation JSON)
 include_directories(
         Poco::Foundation
         Poco::Net
+        Poco::JSON
 )
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(meta_server main.cpp DatabaseConnection.cpp DatabaseConnection.h PlayerRepository.cpp PlayerRepository.h DataBase.cpp DataBase.h metaserver/Factory/BaseHTTPHandler.cpp metaserver/Factory/BaseHTTPHandler.h metaserver/Factory/HandlerFactory.cpp metaserver/Factory/HandlerFactory.h)
+add_executable(meta_server main.cpp DatabaseConnection.cpp DatabaseConnection.h PlayerRepository.cpp PlayerRepository.h DataBase.cpp DataBase.h metaserver/Factory/BaseHTTPHandler.cpp metaserver/Factory/BaseHTTPHandler.h metaserver/Factory/HandlerFactory.cpp metaserver/Factory/HandlerFactory.h metaserver/Factory/Handlers/RegisterNewGamerHTTPHandler.cpp metaserver/Factory/Handlers/RegisterNewGamerHTTPHandler.h metaserver/Factory/Handlers/LoginGamerHTTPHandler.cpp metaserver/Factory/Handlers/LoginGamerHTTPHandler.h metaserver/Factory/Handlers/SaveGameHTTPHandler.cpp metaserver/Factory/Handlers/SaveGameHTTPHandler.h metaserver/Factory/Handlers/StatisticGamerHTTPHandler.cpp metaserver/Factory/Handlers/StatisticGamerHTTPHandler.h)
 
 target_link_libraries(meta_server PUBLIC
         Poco::Foundation
         Poco::Net
+        Poco::JSON
         )
 #find_library(PQXX_LIB pqxx)
 #find_library(PQ_LIB pq)

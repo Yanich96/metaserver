@@ -4,10 +4,24 @@
 
 #include "HandlerFactory.h"
 #include <Poco/Net/HTTPServerRequest.h>
+#include "Handlers/LoginGamerHTTPHandler.h"
+#include "Handlers/RegisterNewGamerHTTPHandler.h"
+#include "Handlers/SaveGameHTTPHandler.h"
+#include "Handlers/StatisticGamerHTTPHandler.h"
 
 Poco::Net::HTTPRequestHandler *HandlerFactory::createRequestHandler(const Poco::Net::HTTPServerRequest &request) {
     auto uri = request.getURI();
     if (uri == "/player/registration")
-        return nullptr;
+        return new RegisterNewGamerHTTPHandler;
+
+    if (uri == "/player/login")
+        return new LoginGamerHTTPHandler;
+
+    if (uri == "/game/save")
+        return new SaveGameHTTPHandler;
+
+    if(uri == "/game/statistic")
+        return new StatisticGamerHTTPHandler;
+
     return nullptr;
 }

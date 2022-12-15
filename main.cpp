@@ -11,8 +11,12 @@ void f(int a){}
 
 int main() {
     HandlerFactory* factory = new HandlerFactory;
+    auto * configs = new Poco::Net::HTTPServerParams{};
+    configs->setMaxThreads(10);
     int a;
-    Poco::Net::HTTPServer server(factory, 80);
+    Poco::Net::HTTPServer server(factory, 8080, configs);
+    server.start();
+    std::cout << "server started";
     std::cin>>a;
     server.stopAll();
     return 0;
