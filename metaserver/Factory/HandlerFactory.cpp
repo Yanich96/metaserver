@@ -12,10 +12,10 @@
 Poco::Net::HTTPRequestHandler *HandlerFactory::createRequestHandler(const Poco::Net::HTTPServerRequest &request) {
     auto uri = request.getURI();
     if (uri == "/player/registration")
-        return new RegisterNewGamerHTTPHandler;
+        return new RegisterNewGamerHTTPHandler(dataBase);
 
     if (uri == "/player/login")
-        return new LoginGamerHTTPHandler;
+        return new LoginGamerHTTPHandler(dataBase);
 
     if (uri == "/game/save")
         return new SaveGameHTTPHandler;

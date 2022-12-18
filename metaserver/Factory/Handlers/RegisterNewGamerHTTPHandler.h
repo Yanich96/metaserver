@@ -8,10 +8,12 @@
 #include <iostream>
 
 
+
 class RegisterNewGamerHTTPHandler : public BaseHTTPHandler{
 public:
+    RegisterNewGamerHTTPHandler(DataBase &dataBase);
     void handleRequest(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response) override;
-
+    DataBase &dataBase;
 };
 
 

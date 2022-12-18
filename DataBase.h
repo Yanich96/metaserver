@@ -12,8 +12,10 @@
 
 class DataBase {
     BlockingQueue<std::shared_ptr<DatabaseConnection>> connectionPool;
+
+public:
     DataBase(int connectionPoolSize);
-    std::unique_ptr<work, Deleter> openTransaction();
+    std::shared_ptr<work> openTransaction();
 };
 
 

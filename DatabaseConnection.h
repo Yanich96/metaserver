@@ -11,20 +11,6 @@
 
 using namespace pqxx;
 
-class Deleter {
-    std::function<void(void)> afterDelete;
-public:
-
-    explicit Deleter(const std::function<void(void)> afterDelete) : afterDelete(afterDelete) {
-    }
-
-    constexpr void operator()(work *arg) const {
-        arg->commit();
-        delete arg;
-        afterDelete();
-    }
-};
-
 class DatabaseConnection {
     connection _connection;
 
@@ -40,8 +26,14 @@ public:
         _connection.close();
     };
 
-    std::unique_ptr<work, Deleter> openTransaction(const std::function<void()> &onClose) {
-        return std::unique_ptr<work, Deleter>{new work(_connection), Deleter(onClose)};
+    std::shared_ptr<work> openTransaction(std::function<void()> onClose) {
+        return std::shared_ptr<work>{
+                new work(_connection),
+                [&, onClose](work *arg) {
+                    arg->commit();
+                    delete arg;
+                    onClose();
+                }};
     };
 };
 

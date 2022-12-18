@@ -9,13 +9,13 @@
 
 DataBase::DataBase(int connectionPoolSize) {
     for (int i = 0; i < connectionPoolSize; ++i) {
-        connectionPool.push(std::shared_ptr<DatabaseConnection>());
+        connectionPool.push(std::make_shared<DatabaseConnection>());
     }
 }
 
-std::unique_ptr<work, Deleter> DataBase::openTransaction() {
+std::shared_ptr<work> DataBase::openTransaction() {
     auto connection = connectionPool.pop();
-    return connection->openTransaction([&]() {
+    return connection->openTransaction([this, connection]() {
         this->connectionPool.push(connection);
     });
 }
