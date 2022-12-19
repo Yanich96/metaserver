@@ -19,4 +19,17 @@ void DatabaseConnection::prepare_my_statement(connection_base &c) {
             "login_player",
             "SELECT ID FROM WIN_USER WHERE NAME=$1 AND PASSWORD=$2"
             );
+    c.prepare(
+            "result_game",
+            "INSERT INTO GAME_RESULT(ID_WINNER, ID_NONWINNER) VALUES($1, $2)"
+            );
+    c.prepare(
+            "count_game_players",
+            "UPDATE WIN_USER SET COUNT_OF_GAMES=COUNT_OF_GAMES+1 WHERE ID IN ($1, $2)"
+            );
+    c.prepare(
+            "update_winCount_player",
+            "UPDATE WIN_USER SET NUMBER_OF_WINS=NUMBER_OF_WINS+1 WHERE ID=$1"
+            );
+
 }

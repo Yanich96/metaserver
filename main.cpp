@@ -1,7 +1,7 @@
 #include <iostream>
 #include <Poco/Net/HTTPServer.h>
-#include "DatabaseConnection.h"
-#include "metaserver/PlayerRepository.h"
+#include "metaserver/Database/DatabaseConnection.h"
+#include "metaserver/Database/PlayerRepository.h"
 #include "metaserver/Factory/HandlerFactory.h"
 
 

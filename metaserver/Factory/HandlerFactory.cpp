@@ -18,7 +18,7 @@ Poco::Net::HTTPRequestHandler *HandlerFactory::createRequestHandler(const Poco::
         return new LoginGamerHTTPHandler(dataBase);
 
     if (uri == "/game/save")
-        return new SaveGameHTTPHandler;
+        return new SaveGameHTTPHandler(dataBase);
 
     if(uri == "/game/statistic")
         return new StatisticGamerHTTPHandler;

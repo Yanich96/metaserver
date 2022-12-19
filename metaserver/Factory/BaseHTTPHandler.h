@@ -8,8 +8,8 @@
 #include <Poco/Net/HTTPServer.h>
 #include <Poco/Net/HTTPRequestHandler.h>
 #include <Poco/JSON/Parser.h>
-#include "../../DataBase.h"
-#include "../PlayerRepository.h"
+#include "../Database/DataBase.h"
+#include "../Database/PlayerRepository.h"
 
 class BaseHTTPHandler : public Poco::Net::HTTPRequestHandler{
 public:

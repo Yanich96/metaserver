@@ -24,3 +24,8 @@ int PlayerRepository::loginPlayer(std::string name, std::string password, std::s
     auto c = *(R.begin());
     return c[0].as<int>();
 }
+
+void PlayerRepository::plusOneGame(int idWinPlayer, int idWinlessPlayer, std::shared_ptr<work> transaction) {
+    result countGame = transaction->exec_prepared("count_game_players", idWinPlayer, idWinlessPlayer);
+    result countWin = transaction->exec_prepared("update_winCount_player", idWinPlayer);
+}

@@ -4,7 +4,7 @@
 #ifndef META_SERVER_PLAYERREPOSITORY_H
 #define META_SERVER_PLAYERREPOSITORY_H
 #include <string>
-#include "../DatabaseConnection.h"
+#include "DatabaseConnection.h"
 struct Player
 {
     int id;
@@ -18,6 +18,7 @@ public:
     void insertPlayer(const Player &player, std::shared_ptr<work> transaction);
     std::optional<Player> player(int id, std::shared_ptr<work> transaction);
     int loginPlayer(std::string name, std::string password, std::shared_ptr<work> transaction);
+    void plusOneGame(int idFirstPlayer, int idSecondPlayer, std::shared_ptr<work> transaction);
 };
 
 

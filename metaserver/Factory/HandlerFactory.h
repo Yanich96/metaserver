@@ -6,7 +6,7 @@
 #define META_SERVER_HANDLERFACTORY_H
 
 #include <Poco/Net/HTTPRequestHandlerFactory.h>
-#include "../../DataBase.h"
+#include "../Database/DataBase.h"
 class HandlerFactory : public Poco::Net::HTTPRequestHandlerFactory{
 public:
     HandlerFactory(): dataBase(5) { }
