@@ -1,7 +1,3 @@
-//
-// Created by Yana Alekseeva on 14.12.2022.
-//
-
 #include "RegisterNewGamerHTTPHandler.h"
 #include <Poco/Net/HTTPServerResponse.h>
 
@@ -19,5 +15,5 @@ void RegisterNewGamerHTTPHandler::handleRequest(Poco::Net::HTTPServerRequest &re
     response.send();
 }
 
-RegisterNewGamerHTTPHandler::RegisterNewGamerHTTPHandler(DataBase &dataBase): dataBase(dataBase){
+RegisterNewGamerHTTPHandler::RegisterNewGamerHTTPHandler(DataBase &dataBase) : dataBase(dataBase) {
 }

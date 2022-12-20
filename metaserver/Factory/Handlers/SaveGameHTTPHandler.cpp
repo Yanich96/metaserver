@@ -1,4 +1,3 @@
-
 #include <Poco/Net/HTTPServerResponse.h>
 #include "SaveGameHTTPHandler.h"
 
@@ -16,6 +15,6 @@ SaveGameHTTPHandler::handleRequest(Poco::Net::HTTPServerRequest &request, Poco::
     response.send();
 }
 
-SaveGameHTTPHandler::SaveGameHTTPHandler(DataBase &dataBase): dataBase(dataBase) {
+SaveGameHTTPHandler::SaveGameHTTPHandler(DataBase &dataBase) : dataBase(dataBase) {
 
 }

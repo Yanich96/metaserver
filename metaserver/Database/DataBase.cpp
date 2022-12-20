@@ -1,7 +1,3 @@
-//
-// Created by Yana Alekseeva on 29.11.2022.
-//
-
 #include "DataBase.h"
 
 #include <memory>

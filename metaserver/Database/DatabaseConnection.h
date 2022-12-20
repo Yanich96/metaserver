@@ -1,7 +1,3 @@
-//
-// Created by Yana Alekseeva on 25.11.2022.
-//
-
 #ifndef META_SERVER_DATABASECONNECTION_H
 #define META_SERVER_DATABASECONNECTION_H
 

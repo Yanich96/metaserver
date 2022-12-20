@@ -1,9 +1,6 @@
-//
-// Created by Yana Alekseeva on 29.11.2022.
-//
-
 #ifndef META_SERVER_DATABASE_H
 #define META_SERVER_DATABASE_H
+
 #include <queue>
 
 #include "DatabaseConnection.h"
@@ -15,6 +12,7 @@ class DataBase {
 
 public:
     DataBase(int connectionPoolSize);
+
     std::shared_ptr<work> openTransaction();
 };
 
