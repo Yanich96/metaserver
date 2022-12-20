@@ -15,15 +15,11 @@ include_directories(
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(meta_server main.cpp metaserver/Database/DatabaseConnection.cpp metaserver/Database/DatabaseConnection.h metaserver/Database/PlayerRepository.cpp metaserver/Database/PlayerRepository.h metaserver/Database/DataBase.cpp metaserver/Database/DataBase.h metaserver/Factory/BaseHTTPHandler.cpp metaserver/Factory/BaseHTTPHandler.h metaserver/Factory/HandlerFactory.cpp metaserver/Factory/HandlerFactory.h metaserver/Factory/Handlers/RegisterNewGamerHTTPHandler.cpp metaserver/Factory/Handlers/RegisterNewGamerHTTPHandler.h metaserver/Factory/Handlers/LoginGamerHTTPHandler.cpp metaserver/Factory/Handlers/LoginGamerHTTPHandler.h metaserver/Factory/Handlers/SaveGameHTTPHandler.cpp metaserver/Factory/Handlers/SaveGameHTTPHandler.h metaserver/Factory/Handlers/StatisticGamerHTTPHandler.cpp metaserver/Factory/Handlers/StatisticGamerHTTPHandler.h BlockingQueue.h metaserver/Database/GameRepository.cpp metaserver/Database/GameRepository.h)
+add_executable(meta_server main.cpp metaserver/Database/DatabaseConnection.cpp metaserver/Database/DatabaseConnection.h metaserver/Database/PlayerRepository.cpp metaserver/Database/PlayerRepository.h metaserver/Database/DataBase.cpp metaserver/Database/DataBase.h metaserver/Factory/BaseHTTPHandler.cpp metaserver/Factory/BaseHTTPHandler.h metaserver/Factory/HandlerFactory.cpp metaserver/Factory/HandlerFactory.h metaserver/Factory/Handlers/RegisterNewGamerHTTPHandler.cpp metaserver/Factory/Handlers/RegisterNewGamerHTTPHandler.h metaserver/Factory/Handlers/LoginGamerHTTPHandler.cpp metaserver/Factory/Handlers/LoginGamerHTTPHandler.h metaserver/Factory/Handlers/SaveGameHTTPHandler.cpp metaserver/Factory/Handlers/SaveGameHTTPHandler.h metaserver/Factory/Handlers/StatisticGamerHTTPHandler.cpp metaserver/Factory/Handlers/StatisticGamerHTTPHandler.h BlockingQueue.h metaserver/Database/GameRepository.cpp metaserver/Database/GameRepository.h metaserver/Factory/Handlers/ChangeNameHTTPHandler.cpp metaserver/Factory/Handlers/ChangeNameHTTPHandler.h)
 
 target_link_libraries(meta_server PUBLIC
         Poco::Foundation
         Poco::Net
         Poco::JSON
         )
-#find_library(PQXX_LIB pqxx)
-#find_library(PQ_LIB pq)
-
-#set(CMAKE_CXX_FLAGS -lpqxx -lpq -I/usr/local/include -L/usr/local/lib)
 
