@@ -24,12 +24,24 @@ void DatabaseConnection::prepare_my_statement(connection_base &c) {
             "INSERT INTO GAME_RESULT(ID_WINNER, ID_NONWINNER) VALUES($1, $2)"
             );
     c.prepare(
-            "count_game_players",
+            "update_count_game_players",
             "UPDATE WIN_USER SET COUNT_OF_GAMES=COUNT_OF_GAMES+1 WHERE ID IN ($1, $2)"
             );
     c.prepare(
             "update_winCount_player",
             "UPDATE WIN_USER SET NUMBER_OF_WINS=NUMBER_OF_WINS+1 WHERE ID=$1"
+            );
+    c.prepare(
+            "count_game_player",
+            "SELECT COUNT_OF_GAMES FROM WIN_USER WHERE ID=$1"
+            );
+    c.prepare(
+            "count_win_player",
+            "SELECT NUMBER_OF_WINS FROM WIN_USER WHERE ID=$1"
+            );
+    c.prepare(
+            "count_winless_player",
+            "SELECT COUNT_OF_GAMES-NUMBER_OF_WINS FROM WIN_USER WHERE ID=$1"
             );
 
 }

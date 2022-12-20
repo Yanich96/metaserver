@@ -26,6 +26,30 @@ int PlayerRepository::loginPlayer(std::string name, std::string password, std::s
 }
 
 void PlayerRepository::plusOneGame(int idWinPlayer, int idWinlessPlayer, std::shared_ptr<work> transaction) {
-    result countGame = transaction->exec_prepared("count_game_players", idWinPlayer, idWinlessPlayer);
+    result countGame = transaction->exec_prepared("update_count_game_players", idWinPlayer, idWinlessPlayer);
     result countWin = transaction->exec_prepared("update_winCount_player", idWinPlayer);
+}
+
+int PlayerRepository::countGamesPlayer(int id, std::shared_ptr<work> transaction) {
+    result R = transaction->exec_prepared("count_game_player", id);
+    if (R.empty())
+        return {};
+    auto c = *(R.begin());
+    return c[0].as<int>();
+}
+
+int PlayerRepository::countWinPlayer(int id, std::shared_ptr<work> transaction) {
+    result R = transaction->exec_prepared("count_win_player", id);
+    if (R.empty())
+        return {};
+    auto c = *(R.begin());
+    return c[0].as<int>();
+}
+
+int PlayerRepository::countWinlessPlayer(int id, std::shared_ptr<work> transaction) {
+    result R = transaction->exec_prepared("count_winless_player", id);
+    if (R.empty())
+        return {};
+    auto c = *(R.begin());
+    return c[0].as<int>();
 }

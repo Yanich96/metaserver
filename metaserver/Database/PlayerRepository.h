@@ -19,6 +19,9 @@ public:
     std::optional<Player> player(int id, std::shared_ptr<work> transaction);
     int loginPlayer(std::string name, std::string password, std::shared_ptr<work> transaction);
     void plusOneGame(int idFirstPlayer, int idSecondPlayer, std::shared_ptr<work> transaction);
+    int countGamesPlayer(int id, std::shared_ptr<work> transaction);
+    int countWinPlayer(int id, std::shared_ptr<work> transaction);
+    int countWinlessPlayer(int id, std::shared_ptr<work> transaction);
 };
 
 
